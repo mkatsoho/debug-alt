@@ -86,14 +86,21 @@ function formatArgs() {
 
   if (useColors) {
     var c = this.color;
-
+    // change the output order, move diff before args
+    /* original
     args[0] = '  \u001b[3' + c + ';1m' + name + ' '
       + '\u001b[0m'
       + args[0] + '\u001b[3' + c + 'm'
       + ' +' + exports.humanize(this.diff) + '\u001b[0m';
+    */
+    args[0] = '  \u001b[3' + c + ';1m' + name + ' ' + '\u001b[0m'
+      + '\u001b[3' + c + 'm' + ' +' + exports.humanize(this.diff) + '\u001b[0m '
+      + (args.callee.caller.caller.name || 'NA') + "() -> "
+      + args[0]; 
   } else {
-    args[0] = new Date().toUTCString()
-      + ' ' + name + ' ' + args[0];
+    // add millisends by using ISO date
+    /* original args[0] = new Date().toUTCString() + ' ' + name + ' ' + args[0]; */
+    args[0] = new Date().toISOString() + ' ' + name + ' ' + args[0];
   }
   return args;
 }
