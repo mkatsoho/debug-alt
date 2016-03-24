@@ -12,6 +12,7 @@ exports.disable = disable;
 exports.enable = enable;
 exports.enabled = enabled;
 exports.humanize = require('ms');
+var DebugLevels = ['FATAL', 'ERROR', 'WARN', 'INFO', 'DEBUG', 'TRACE'];  // added for debug levels
 
 /**
  * The currently active debug mode names, and names to skip.
@@ -84,6 +85,26 @@ function debug(namespace) {
     if (null == self.color && self.useColors) self.color = selectColor();
 
     var args = Array.prototype.slice.call(arguments);
+
+
+    // ## new feature: enable debug level in output, default is FATAL
+    // if first argu is fatal/error/warn/info/debug/trace, move it to the end, otherwize add FATAL to the end of args
+    var level = args[0]; 
+    if (typeof(level) == 'string'){
+        level = level.toUpperCase();
+        if ( DebugLevels.indexOf(level) != -1 ) {
+            // first arg is a debug level, ensure it is upper case
+            args[0] = level;
+        } else {
+            // first arg is a string, but not a debug level, add FATAL to the first place
+            args = ['FATAL'].concat(args);
+        }
+    } else {
+        // no debug level in args, add FATAL to the first place
+        args = ['FATAL'].concat(args);
+    };
+
+
 
     args[0] = exports.coerce(args[0]);
 

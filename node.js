@@ -84,23 +84,35 @@ function formatArgs() {
   var useColors = this.useColors;
   var name = this.namespace;
 
+  // new feature: add debug level, args[0] is the debug level (be set in debug.js), args 1 to n is original args
+  var level = args['0']; 
+  args['0'] = '';         // clean the debug level arg
+
+
   if (useColors) {
     var c = this.color;
-    // change the output order, move diff before args
+
+
+    // new feature: change the output, add debug level, add function name, move diff before debug level
     /* original
     args[0] = '  \u001b[3' + c + ';1m' + name + ' '
       + '\u001b[0m'
       + args[0] + '\u001b[3' + c + 'm'
       + ' +' + exports.humanize(this.diff) + '\u001b[0m';
     */
-    args[0] = '  \u001b[3' + c + ';1m' + name + ' ' + '\u001b[0m'
-      + '\u001b[3' + c + 'm' + ' +' + exports.humanize(this.diff) + '\u001b[0m '
+    args[0] = '\u001b[3' + c + ';1m' + name + ' ' + '\u001b[0m'
+      + '\u001b[3' + c + 'm' + '+' + exports.humanize(this.diff) + '\u001b[0m'
+      + ' '+level+' '
       + (args.callee.caller.caller.name || 'NA') + "() -> "
       + args[0]; 
   } else {
     // add millisends by using ISO date
     /* original args[0] = new Date().toUTCString() + ' ' + name + ' ' + args[0]; */
-    args[0] = new Date().toISOString() + ' ' + name + ' ' + args[0];
+    args[0] = new Date().toISOString() + ' ' + name + ' ' 
+        + '+'+exports.humanize(this.diff) 
+        + ' '+level+' '
+        + (args.callee.caller.caller.name || 'NA') + "() -> "
+        + args[0];
   }
   return args;
 }
