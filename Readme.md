@@ -1,10 +1,54 @@
 # debug-alt 
 
-  This is derived from debug, with features
+  This is derived from debug, refer to it in the below of this doc. 
+
+## new features added
+
 - show milliseconds in output 
 - show function name in output
-- provide function log() is the base of below functions
-- provide functions like: trace, debug, info, warn, error, fatal
+- add debug level (trace, debug, info, warn, error, or fatal) in log
+- add mocha tests (specs.js)
+- (todo, but not available) filter by log level
+
+## How to use it
+
+Refer to test/specs.js for usage. 
+Refer this readme file for usage. 
+
+Quick example:
+
+edit package.json file, and add these
+```js
+  "dependencies": {
+    "debug-alt": "git+ssh://git@github.com:mkatsoho/debug-alt.git"
+  },
+
+```js
+
+edit myexample.js file
+
+```js
+var debug = require('debug-alt')('myexample:debug1');
+var debug2 = require('debug-alt')('myexample:debug2');
+
+function myfunc(x){
+    debug2('debug', 'args = ', x);
+};
+
+debug('warn', 'executing myfunc()');
+myfunc(1314);
+debug('info', 'done');
+```
+
+execute myexample.js in shell
+
+```bash
+$ npm install                                           # if using package.js, strongly suggest to use it
+$ export DEBUG=myexample:*; node ./myexample.js         # execute the example
+
+$ export DEBUG=myexample:debug2; node ./myexample.js    # execute the example, show only debug2
+```
+
 
 # debug
 

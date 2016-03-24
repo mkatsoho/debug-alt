@@ -1,0 +1,14 @@
+{
+  "name": "sample",
+  "version": "1.0.0",
+  "description": "mysample",
+  "main": "myexample.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "debug-alt": "git+ssh://git@github.com:mkatsoho/debug-alt.git"
+  },
+  "author": "",
+  "license": "MIT"
+}
