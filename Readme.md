@@ -23,7 +23,7 @@ edit package.json file, and add these
     "debug-alt": "git+ssh://git@github.com:mkatsoho/debug-alt.git"
   },
 
-```js
+```
 
 edit myexample.js file
 
