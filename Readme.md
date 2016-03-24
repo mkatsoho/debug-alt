@@ -1,3 +1,11 @@
+# debug-alt 
+
+  This is derived from debug, with features
+- show milliseconds in output 
+- show function name in output
+- provide function log() is the base of below functions
+- provide functions like: trace, debug, info, warn, error, fatal
+
 # debug
 
   tiny node.js debugging utility modelled after node core's debugging technique.
