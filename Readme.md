@@ -18,6 +18,15 @@ Refer this readme file for usage.
 Quick example:
 
 edit package.json file, and add these
+
+```js
+  "dependencies": {
+    "debug-alt": "git+https://github.com/mkatsoho/debug-alt.git"
+  },
+
+```
+or
+
 ```js
   "dependencies": {
     "debug-alt": "git+ssh://git@github.com:mkatsoho/debug-alt.git"
