@@ -1,6 +1,6 @@
 {
   "name": "debug-alt",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/mkatsoho/debug-alt.git"
@@ -13,7 +13,8 @@
   ],
   "author": "TJ Holowaychuk <tj@vision-media.ca>",
   "contributors": [
-    "Nathan Rajlich <nathan@tootallnate.net> (http://n8.io)"
+    "Nathan Rajlich <nathan@tootallnate.net> (http://n8.io)",
+    "michael Chen <michelygchen@163.com> "
   ],
   "license": "MIT",
   "dependencies": {
