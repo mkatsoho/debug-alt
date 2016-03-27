@@ -15,24 +15,20 @@
 Refer to test/specs.js for usage. 
 Refer this readme file for usage. 
 
-Quick example:
+Below is a quick example:
+
+### install debug-alt 
 
 edit package.json file, and add these
 
 ```js
   "dependencies": {
-    "debug-alt": "git+https://github.com/mkatsoho/debug-alt.git"
+    "debug-alt": ">=2.2.0"
   },
 
 ```
-or
 
-```js
-  "dependencies": {
-    "debug-alt": "git+ssh://git@github.com:mkatsoho/debug-alt.git"
-  },
-
-```
+### using debug-alt in codes
 
 edit myexample.js file
 
@@ -48,6 +44,8 @@ debug('warn', 'executing myfunc()');
 myfunc(1314);
 debug('info', 'done');
 ```
+
+### execute codes
 
 execute myexample.js in shell
 
