@@ -89,7 +89,7 @@ function formatArgs() {
   args['0'] = '';         // clean the debug level arg
 
 
-  var callerName = NA;
+  var callerName = 'NA';
   if (args.callee.caller.hasOwnProperty('caller')){
       callerName = args.callee.caller.caller.name || 'NA';
   } else {
