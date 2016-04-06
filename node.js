@@ -90,7 +90,7 @@ function formatArgs() {
 
 
   var callerName = 'NA';
-  if (args.callee.caller.hasOwnProperty('caller')){
+  if (args.callee.caller.hasOwnProperty('caller') && args.callee.caller.caller){
       callerName = args.callee.caller.caller.name || 'NA';
   } else {
       callerName = args.callee.caller.name || 'NA';
