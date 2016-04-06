@@ -89,6 +89,12 @@ function formatArgs() {
   args['0'] = '';         // clean the debug level arg
 
 
+  var callerName = NA;
+  if (args.callee.caller.hasOwnProperty('caller')){
+      callerName = args.callee.caller.caller.name || 'NA';
+  } else {
+      callerName = args.callee.caller.name || 'NA';
+  }
   if (useColors) {
     var c = this.color;
 
@@ -103,7 +109,7 @@ function formatArgs() {
     args[0] = '\u001b[3' + c + ';1m' + name + ' ' + '\u001b[0m'
       + '\u001b[3' + c + 'm' + '+' + exports.humanize(this.diff) + '\u001b[0m'
       + ' '+level+' '
-      + (args.callee.caller.caller.name || 'NA') + "() -> "
+      + callerName + "() -> "
       + args[0]; 
   } else {
     // add millisends by using ISO date
@@ -111,7 +117,7 @@ function formatArgs() {
     args[0] = new Date().toISOString() + ' ' + name + ' ' 
         + '+'+exports.humanize(this.diff) 
         + ' '+level+' '
-        + (args.callee.caller.caller.name || 'NA') + "() -> "
+        + callerName + "() -> "
         + args[0];
   }
   return args;
